@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Update Users</title>
+        <link th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+        <link th:href="@{/webjars/font-awesome/5.6.3/css/all.min.css}" rel="stylesheet" />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div th:replace="fragments/header::header">Header</div>
+        <div class="container">
+        <h1 class="btn btn-primary">
+            <span class="fa fa-edit"></span> Update users</h1>
+        <hr>
+        <form th:object="${user}" th:action="@{/DangNhap/EditUsers}" method="post" >
+            <div class="form-group">
+                <label for="id">username:</label> 
+                <input type="text" id="username" class="form-control" name="id" th:field="*{username}" readonly="true"><br/> 
+            </div>
+           
+            <div class="form-group">
+                <label for="id">Password:</label>
+                <input type="password" id="username" class="form-control" name="id" th:field="*{password}"><br/>
+                <small th:if="${#fields.hasErrors('password')}"
+                       class="form-text text-muted alert alert-danger"
+                       th:errors="*{password}">password Errors</small> 
+               </div>
+            <div class="form-group">
+                <label for="id">fullname:</label>
+                <input type="text" id="username" class="form-control" name="id" th:field="*{fullname}"><br/>
+               <small th:if="${#fields.hasErrors('fullname')}"
+                       class="form-text text-muted alert alert-danger"
+                       th:errors="*{fullname}">fullname Errors</small> 
+                <input type="submit" name="Update">
+            </div>
+        </form>
+        <a th:href="${'/DangNhap/listUser'}">List All Users</a>
+        </div>
+        <div th:replace="fragments/footer::footer">Footer</div>
+    </body>
+</html>

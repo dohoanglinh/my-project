@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Update Record</title>
+        <link th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+        <link th:href="@{/webjars/font-awesome/5.6.3/css/all.min.css}" rel="stylesheet" />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div th:replace="fragments/header::header">Header</div>
+        <div class="container">
+        <h1 class="btn btn-primary">
+            <span class="fa fa-edit"></span> Update Record</h1>
+        <hr>
+        <form th:object="${record}" th:action="@{/DangNhap/EditRecords}" method="post" >
+            <div class="form-group">
+                <label for="id">ID:</label> 
+                <input type="text" id="username" class="form-control" name="id" th:field="*{recordID}" readonly="true"><br/>
+            </div>
+            <div class="form-group">
+                <label for="id">Type:</label> 
+                <input type="radio" th:name="gender" value="true" th:field="*{type}">THƯỞNG |
+                <input type="radio" th:name="gender"  value="false" th:field="*{type}">PHẠT<br/>
+
+            </div>
+            <div class="form-group">
+                <label for="id">reason:</label>
+                <input type="text" id="username" class="form-control" name="id" th:field="*{reason}"><br/>
+            </div>
+            <div class="form-group">
+                <label for="id">date:</label>
+                <input type="text" id="username" class="form-control" name="id" th:field="*{date}"><br/>
+            </div>
+            <div class="form-group">
+                <label for="id">staffId:</label>
+                <input type="text" id="username" class="form-control" name="id" th:field="*{staffsID}"><br/>
+                <input type="submit" name="Add New">
+            </div>
+
+        </form>
+        <a th:href="${'/DangNhap/listRecord'}">List All Depart</a>
+        </div>
+        <div th:replace="fragments/footer::footer">Footer</div>
+    </body>
+</html>

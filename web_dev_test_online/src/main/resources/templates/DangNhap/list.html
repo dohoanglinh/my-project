@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>List Staffs</title>    
+        <link th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+        <link th:href="@{/webjars/font-awesome/5.6.3/css/all.min.css}" rel="stylesheet" />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    </head>
+
+    <body>
+        <div th:replace="fragments/header::header">Header</div>
+
+        <h1 style="text-align: center">List All Staffs</h1>
+        <hr>
+
+        <div class="container" style="text-align: left">
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <br/>
+            </form>
+            <a th:href="${'/DangNhap/addNhanVien'}" class="btn btn-success float-right">
+                <i class="fa fa-plus-square"></i> Add new staff
+
+            </a>
+
+        </div>
+
+        <div class="container">
+            <table class="table table-bordered">
+                <tr>
+                    <td>ID</td>
+                    <td>Name</td>
+                    <td>gender</td>
+                    <td>birthday</td>
+                    <td>photo</td>
+                    <td>email</td>
+                    <td>phone</td>
+                    <td>salary</td>
+                    <td>notes</td>
+                    <td>departId</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr th:each="DangNhap : ${DangNhap}">
+                    <td th:text="${DangNhap.staffsID}"></td>
+                    <td th:text="${DangNhap.name}"></td>
+                    <td th:unless="${DangNhap.gender}==true">Nam</td>
+                    <td th:unless="${DangNhap.gender}==False">Nữ</td>
+                    <td th:text="${DangNhap.birthday}"></td>
+                    <td >
+                        <image  th:src="@{'data:image/jpg;base64,'+${DangNhap.image(DangNhap.photo)}}"/>
+                    </td> 
+                    <td th:text="${DangNhap.email}"></td>
+                    <td th:text="${DangNhap.phone}"></td>
+                    <td th:text="${DangNhap.salary}"></td>
+                    <td th:text="${DangNhap.notes}"></td>
+                    <td th:text="${DangNhap.departId}"></td>
+                    <td>
+                        <!--                        <a th:href="${'/DangNhap/addNhanVien'}">New</a>-->
+                        <a th:href="${'/DangNhap/EditNhanVien/' + DangNhap.staffsID}" class="btn btn-outline-primary">Edit</a>
+                        <a th:href="${'/DangNhap/delete/' + DangNhap.staffsID}" class="btn btn-outline-primary">Delete</a>
+                    </td>
+                </tr>
+                </tr>
+            </table>
+        </div>
+        <hr style="color: blue"/>
+        <div th:replace="fragments/footer::footer">Footer</div>
+    </body>
+
+</html>

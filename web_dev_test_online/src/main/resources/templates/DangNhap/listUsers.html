@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>List Users</title>  
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    </head>
+
+    <body>
+        <div th:replace="fragments/header::header">Header</div>
+        <h1 style="text-align: center">List All Users</h1>
+        <hr>
+        <div class="container">
+            <div class="container" style="text-align: left">
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <br/>
+                </form>
+                <a th:href="${'/DangNhap/AddUsers'}" class="btn btn-success float-right">
+                    <i class="fa fa-plus-square"></i> Add new Users
+
+                </a>
+
+            </div>
+            <table class="table table-bordered">
+                <tr>
+                    <td>username</td>
+                    <td>Password</td>
+                    <td>Full name</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr th:each="User : ${User}">
+                    <td th:text="${User.username}"></td>
+                    <td th:text="${User.password}"></td>
+                    <td th:text="${User.fullname}"></td>
+                    <td>
+                        <!--                    <a th:href="${'/DangNhap/AddUsers' }">new</a>-->
+                        <a th:href="${'/DangNhap/EditUsers/' + User.username}" class="btn btn-outline-primary">edit</a>
+                        <a th:href="${'/DangNhap/delete2/' + User.username}" class="btn btn-outline-primary">delete</a>
+                    </td>
+                </tr>
+                </tr>
+            </table>
+        </div>
+        <div th:replace="fragments/footer::footer">Footer</div>
+    </body>
+
+</html>

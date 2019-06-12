@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>List Records</title>  
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    </head>
+
+    <body>
+        <div th:replace="fragments/header::header">Header</div>
+        <h1 style="text-align: center">List All Records</h1>
+        <hr>
+        <div class="container" style="text-align: left">
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <br/>
+            </form>
+            <a th:href="${'/DangNhap/AddRecord'}" class="btn btn-success float-right">
+                <i class="fa fa-plus-square"></i> Add new Record
+
+            </a>
+
+        </div>
+        <div class="container">
+            <table class="table table-bordered">
+                <tr>
+                    <td>ID</td>
+                    <td>type</td>
+                    <td>reason</td>
+                    <td>date</td>
+                    <td>staffId</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr th:each="Records : ${Records}">
+                    <td th:text="${Records.recordID}"></td>
+                    <td th:text="${Records.type}"></td>
+                    <td th:text="${Records.reason}"></td>
+                    <td th:text="${Records.date}"></td>
+                    <td th:text="${Records.staffsID}"></td>
+                    <td>
+                        <!--                    <a th:href="${'/DangNhap/AddRecord' }">new</a>-->
+                        <a th:href="${'/DangNhap/EditRecords/' + Records.recordID}" class="btn btn-outline-primary">edit</a>
+                        <a th:href="${'/DangNhap/deleteR/' + Records.recordID}" class="btn btn-outline-primary">delete</a>
+                    </td>
+                </tr>
+                </tr>
+            </table>
+        </div>
+        <div th:replace="fragments/footer::footer">Footer</div>
+    </body>
+
+</html>
