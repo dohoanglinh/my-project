@@ -21,8 +21,8 @@ public class Jdbc {
 
     private static String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     private static String dburl = "jdbc:sqlserver://localhost;database=QuanLiNhaTro";
-    private static String username = "sa";
-    private static String password = "123456";
+    private static String username = "lg";
+    private static String password = "sa";
 
     static {
         try {
