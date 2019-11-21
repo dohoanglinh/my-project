@@ -51,35 +51,28 @@ public class GioithieuDialog extends javax.swing.JFrame {
         txtGioithieu.setColumns(20);
         txtGioithieu.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
         txtGioithieu.setRows(5);
-        txtGioithieu.setText("\t\t         Xin chào ^^!\nNhóm 4 xin giới thiệu về một phần mềm hỗ trợ về Quản Lý Nhà Trọ được \nchúng tôi phát triển.\nPhần mềm này có thể giúp chúng ta dễ dàng quản lý một cách dễ dàng\nPhần mềm sẽ được trình bày, quản lý, kết nối một cách hợp lý và có hệ\nthống để tiện việc theo dõi, phân loại và tìm kiếm.\nHơn nữa, Phần mềm sẽ được đăng kèm thông tin của thành viên để đảm\nbảo độ tin cậy cao nhất.\nVới Phần mềm như trên, hy vọng sẽ làm cho các bạn hài lòng.\n\n");
+        txtGioithieu.setText("\t\t         Xin chào ^^!\nNhóm Friendly xin giới thiệu về một phần mềm hỗ trợ về Quản Lý Nhà Trọ được \nchúng tôi phát triển.\nPhần mềm này có thể giúp chúng ta dễ dàng quản lý một cách dễ dàng\nPhần mềm sẽ được trình bày, quản lý, kết nối một cách hợp lý và có hệ\nthống để tiện việc theo dõi, phân loại và tìm kiếm.\nHơn nữa, Phần mềm sẽ được đăng kèm thông tin của thành viên để đảm\nbảo độ tin cậy cao nhất.\nVới Phần mềm như trên, hy vọng sẽ làm cho các bạn hài lòng.\n\n");
         jScrollPane1.setViewportView(txtGioithieu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1)
             .addGroup(layout.createSequentialGroup()
                 .addGap(435, 435, 435)
-                .addComponent(jLabel1)
-                .addGap(0, 127, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addComponent(lbGioiThieu)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel1))
+            .addComponent(lbGioiThieu, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbGioiThieu, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
-                .addGap(16, 16, 16))
+                .addComponent(lbGioiThieu, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
 
         pack();

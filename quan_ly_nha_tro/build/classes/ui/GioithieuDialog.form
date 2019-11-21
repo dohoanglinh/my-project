@@ -31,21 +31,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="435" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="127" max="32767" attributes="0"/>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
-              <Component id="lbGioiThieu" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
+          <Component id="lbGioiThieu" alignment="0" min="-2" pref="591" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -53,10 +44,10 @@
           <Group type="102" attributes="0">
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="lbGioiThieu" min="-2" pref="189" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="241" max="32767" attributes="0"/>
-              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+              <Component id="lbGioiThieu" min="-2" pref="311" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" pref="224" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -86,7 +77,7 @@
               <Font name="Dialog" size="15" style="1"/>
             </Property>
             <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="&#x9;&#x9;         Xin ch&#xe0;o ^^!&#xa;Nh&#xf3;m 4 xin gi&#x1edb;i thi&#x1ec7;u v&#x1ec1; m&#x1ed9;t ph&#x1ea7;n m&#x1ec1;m h&#x1ed7; tr&#x1ee3; v&#x1ec1; Qu&#x1ea3;n L&#xfd; Nh&#xe0; Tr&#x1ecd; &#x111;&#x1b0;&#x1ee3;c &#xa;ch&#xfa;ng t&#xf4;i ph&#xe1;t tri&#x1ec3;n.&#xa;Ph&#x1ea7;n m&#x1ec1;m n&#xe0;y c&#xf3; th&#x1ec3; gi&#xfa;p ch&#xfa;ng ta d&#x1ec5; d&#xe0;ng qu&#x1ea3;n l&#xfd; m&#x1ed9;t c&#xe1;ch d&#x1ec5; d&#xe0;ng&#xa;Ph&#x1ea7;n m&#x1ec1;m s&#x1ebd; &#x111;&#x1b0;&#x1ee3;c tr&#xec;nh b&#xe0;y, qu&#x1ea3;n l&#xfd;, k&#x1ebf;t n&#x1ed1;i m&#x1ed9;t c&#xe1;ch h&#x1ee3;p l&#xfd; v&#xe0; c&#xf3; h&#x1ec7;&#xa;th&#x1ed1;ng &#x111;&#x1ec3; ti&#x1ec7;n vi&#x1ec7;c theo d&#xf5;i, ph&#xe2;n lo&#x1ea1;i v&#xe0; t&#xec;m ki&#x1ebf;m.&#xa;H&#x1a1;n n&#x1eef;a, Ph&#x1ea7;n m&#x1ec1;m s&#x1ebd; &#x111;&#x1b0;&#x1ee3;c &#x111;&#x103;ng k&#xe8;m th&#xf4;ng tin c&#x1ee7;a th&#xe0;nh vi&#xea;n &#x111;&#x1ec3; &#x111;&#x1ea3;m&#xa;b&#x1ea3;o &#x111;&#x1ed9; tin c&#x1ead;y cao nh&#x1ea5;t.&#xa;V&#x1edb;i Ph&#x1ea7;n m&#x1ec1;m nh&#x1b0; tr&#xea;n, hy v&#x1ecd;ng s&#x1ebd; l&#xe0;m cho c&#xe1;c b&#x1ea1;n h&#xe0;i l&#xf2;ng.&#xa;&#xa;"/>
+            <Property name="text" type="java.lang.String" value="&#x9;&#x9;         Xin ch&#xe0;o ^^!&#xa;Nh&#xf3;m Friendly xin gi&#x1edb;i thi&#x1ec7;u v&#x1ec1; m&#x1ed9;t ph&#x1ea7;n m&#x1ec1;m h&#x1ed7; tr&#x1ee3; v&#x1ec1; Qu&#x1ea3;n L&#xfd; Nh&#xe0; Tr&#x1ecd; &#x111;&#x1b0;&#x1ee3;c &#xa;ch&#xfa;ng t&#xf4;i ph&#xe1;t tri&#x1ec3;n.&#xa;Ph&#x1ea7;n m&#x1ec1;m n&#xe0;y c&#xf3; th&#x1ec3; gi&#xfa;p ch&#xfa;ng ta d&#x1ec5; d&#xe0;ng qu&#x1ea3;n l&#xfd; m&#x1ed9;t c&#xe1;ch d&#x1ec5; d&#xe0;ng&#xa;Ph&#x1ea7;n m&#x1ec1;m s&#x1ebd; &#x111;&#x1b0;&#x1ee3;c tr&#xec;nh b&#xe0;y, qu&#x1ea3;n l&#xfd;, k&#x1ebf;t n&#x1ed1;i m&#x1ed9;t c&#xe1;ch h&#x1ee3;p l&#xfd; v&#xe0; c&#xf3; h&#x1ec7;&#xa;th&#x1ed1;ng &#x111;&#x1ec3; ti&#x1ec7;n vi&#x1ec7;c theo d&#xf5;i, ph&#xe2;n lo&#x1ea1;i v&#xe0; t&#xec;m ki&#x1ebf;m.&#xa;H&#x1a1;n n&#x1eef;a, Ph&#x1ea7;n m&#x1ec1;m s&#x1ebd; &#x111;&#x1b0;&#x1ee3;c &#x111;&#x103;ng k&#xe8;m th&#xf4;ng tin c&#x1ee7;a th&#xe0;nh vi&#xea;n &#x111;&#x1ec3; &#x111;&#x1ea3;m&#xa;b&#x1ea3;o &#x111;&#x1ed9; tin c&#x1ead;y cao nh&#x1ea5;t.&#xa;V&#x1edb;i Ph&#x1ea7;n m&#x1ec1;m nh&#x1b0; tr&#xea;n, hy v&#x1ecd;ng s&#x1ebd; l&#xe0;m cho c&#xe1;c b&#x1ea1;n h&#xe0;i l&#xf2;ng.&#xa;&#xa;"/>
           </Properties>
         </Component>
       </SubComponents>

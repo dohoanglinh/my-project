@@ -20,7 +20,7 @@ import java.sql.Statement;
 public class Jdbc {
 
     private static String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-    private static String dburl = "jdbc:sqlserver://localhost;database=QuanLiNhaTro";
+    private static String dburl = "jdbc:sqlserver://localhost:1433;databaseName=QuanLiNhaTro";
     private static String username = "lg";
     private static String password = "sa";
 

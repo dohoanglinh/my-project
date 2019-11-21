@@ -109,10 +109,10 @@ public class DoiMatKhauDialog extends javax.swing.JDialog {
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLabel1.setText("Change password");
+        jLabel1.setText("Đổi Mật Khẩu");
 
         lblRole.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        lblRole.setText("Employer:");
+        lblRole.setText("người dùng:");
 
         lblMa.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         lblMa.setText("MaNV");
@@ -124,13 +124,13 @@ public class DoiMatKhauDialog extends javax.swing.JDialog {
         jLabel5.setText("-");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel3.setText("Previous password:");
+        jLabel3.setText("Mật khẩu cũ:");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel4.setText("New password:");
+        jLabel4.setText("Mật Khẩu Mới:");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel6.setText("Confirm:");
+        jLabel6.setText("Nhập Lại:");
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Delete.png"))); // NOI18N
@@ -178,7 +178,7 @@ public class DoiMatKhauDialog extends javax.swing.JDialog {
                                 .addComponent(jLabel3)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 44, Short.MAX_VALUE))
+                        .addGap(0, 81, Short.MAX_VALUE))
                     .addComponent(jSeparator1)
                     .addComponent(jSeparator2))
                 .addContainerGap())
@@ -189,26 +189,27 @@ public class DoiMatKhauDialog extends javax.swing.JDialog {
                 .addComponent(jButton2)
                 .addGap(101, 101, 101))
             .addGroup(layout.createSequentialGroup()
-                .addGap(124, 124, 124)
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(lblRole)
-                .addGap(18, 18, 18)
-                .addComponent(lblMa)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTen)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(lblRole)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblMa)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblTen))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(138, 138, 138)
+                        .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(13, 13, 13)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(35, 35, 35)
+                .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(lblRole)
