@@ -211,7 +211,7 @@ int index=0;
         else if (!maPT.matches("PT[0-9]{3}")) {
             check=false;
             txtMaPT.setBackground(Color.pink);
-            JOptionPane.showMessageDialog(this, "Wrong MaPT pattern! (For instance: HD001)", "Error", 0);
+            JOptionPane.showMessageDialog(this, "Wrong MaPT pattern! (For instance: PT001)", "Error", 0);
         } else {
             try {
                 ArrayList<PhongTro> ds = PhongTroDAO.select();

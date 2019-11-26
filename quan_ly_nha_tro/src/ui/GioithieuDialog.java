@@ -51,7 +51,7 @@ public class GioithieuDialog extends javax.swing.JFrame {
         txtGioithieu.setColumns(20);
         txtGioithieu.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
         txtGioithieu.setRows(5);
-        txtGioithieu.setText("\t\t         Xin chào ^^!\nNhóm Friendly xin giới thiệu về một phần mềm hỗ trợ về Quản Lý Nhà Trọ được \nchúng tôi phát triển.\nPhần mềm này có thể giúp chúng ta dễ dàng quản lý một cách dễ dàng\nPhần mềm sẽ được trình bày, quản lý, kết nối một cách hợp lý và có hệ\nthống để tiện việc theo dõi, phân loại và tìm kiếm.\nHơn nữa, Phần mềm sẽ được đăng kèm thông tin của thành viên để đảm\nbảo độ tin cậy cao nhất.\nVới Phần mềm như trên, hy vọng sẽ làm cho các bạn hài lòng.\n\n");
+        txtGioithieu.setText("\t CHÀO MỪNG CÁC BẠN ĐẾN VỚI ỨNG DỤNG\nNhóm Friendly xin giới thiệu về một phần mềm hỗ trợ về Quản Lý Nhà Trọ được \nchúng tôi phát triển.\nPhần mềm này có thể giúp chúng ta dễ dàng quản lý một cách dễ dàng,\nan toàn về bảo mật.\nPhần mềm sẽ được trình bày, quản lý, kết nối một cách hợp lý và có hệ\nthống để tiện việc theo dõi, phân loại và tìm kiếm.\nHơn nữa, Phần mềm sẽ được đăng kèm thông tin của thành viên để đảm\nbảo độ tin cậy cao nhất.\nVới Phần mềm như trên, hy vọng sẽ làm cho các bạn hài lòng và tin tưởng\nsản phẩm chúng tôi.");
         jScrollPane1.setViewportView(txtGioithieu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -70,9 +70,9 @@ public class GioithieuDialog extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbGioiThieu, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();

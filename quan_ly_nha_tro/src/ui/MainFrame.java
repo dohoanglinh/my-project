@@ -335,6 +335,7 @@ public class MainFrame extends javax.swing.JFrame {
         jMenu1.add(mitDX);
         jMenu1.add(jSeparator1);
 
+        mitDMK.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
         mitDMK.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         mitDMK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Shield.png"))); // NOI18N
         mitDMK.setText("Đổi mật khẩu");
