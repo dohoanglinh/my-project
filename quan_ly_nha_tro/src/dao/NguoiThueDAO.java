@@ -5,7 +5,6 @@
  */
 package dao;
 
-import help.General;
 import help.Jdbc;
 import java.sql.ResultSet;
 import java.util.ArrayList;

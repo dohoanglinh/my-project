@@ -11,26 +11,19 @@ public class NguoiThue {
     private boolean gioiTinh;
     private int tuoi;
 
-    public String getHinh() {
-        return hinh;
-    }
-
-    public void setHinh(String hinh) {
-        this.hinh = hinh;
-    }
-
     public NguoiThue() {
+        super();
     }
 
-    public NguoiThue(String maND, String tenND, String diaChi,
-            String dienThoai, String email, String cmnd,
-            boolean gioiTinh, int tuoi) {
+    public NguoiThue(String maND, String tenND, String diaChi, String dienThoai, String email, String cmnd, String hinh, boolean gioiTinh, int tuoi) {
+        super();
         this.maND = maND;
         this.tenND = tenND;
         this.diaChi = diaChi;
         this.dienThoai = dienThoai;
         this.email = email;
         this.cmnd = cmnd;
+        this.hinh = hinh;
         this.gioiTinh = gioiTinh;
         this.tuoi = tuoi;
     }
@@ -46,7 +39,7 @@ public class NguoiThue {
     public String getTenND() {
         return tenND;
     }
-    
+
     public void setTenND(String tenND) {
         this.tenND = tenND;
     }
@@ -58,7 +51,7 @@ public class NguoiThue {
     public void setDiaChi(String diaChi) {
         this.diaChi = diaChi;
     }
-    
+
     public String getDienThoai() {
         return dienThoai;
     }
@@ -70,7 +63,7 @@ public class NguoiThue {
     public String getEmail() {
         return email;
     }
-    
+
     public void setEmail(String email) {
         this.email = email;
     }
@@ -82,7 +75,15 @@ public class NguoiThue {
     public void setCmnd(String cmnd) {
         this.cmnd = cmnd;
     }
-    
+
+    public String getHinh() {
+        return hinh;
+    }
+
+    public void setHinh(String hinh) {
+        this.hinh = hinh;
+    }
+
     public boolean isGioiTinh() {
         return gioiTinh;
     }
@@ -97,5 +98,6 @@ public class NguoiThue {
 
     public void setTuoi(int tuoi) {
         this.tuoi = tuoi;
-    } 
+    }
+
 }

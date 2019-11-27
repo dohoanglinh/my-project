@@ -9,12 +9,18 @@ import dao.NguoiThueDAO;
 import help.General;
 import java.awt.Color;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import model.NguoiThue;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class NguoiThueFrame extends javax.swing.JFrame {
 
@@ -37,7 +43,7 @@ public class NguoiThueFrame extends javax.swing.JFrame {
                 Object[] row = {
                     nt.getMaND(),
                     nt.getTenND(),
-                    nt.isGioiTinh()?"Nam":"Nữ",
+                    nt.isGioiTinh() ? "Nam" : "Nữ",
                     nt.getTuoi(),
                     nt.getDiaChi(),
                     nt.getDienThoai(),
@@ -309,6 +315,7 @@ public class NguoiThueFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblNT = new javax.swing.JTable();
         jLabel11 = new javax.swing.JLabel();
+        btnxuat = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Quản lý người thuê phòng");
@@ -653,6 +660,13 @@ public class NguoiThueFrame extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
         jLabel11.setText("Danh sách người thuê phòng");
 
+        btnxuat.setText("Xuất Danh Sách");
+        btnxuat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnxuatActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -665,6 +679,10 @@ public class NguoiThueFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1)
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(302, 302, 302)
+                .addComponent(btnxuat)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -672,8 +690,10 @@ public class NguoiThueFrame extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addComponent(jLabel11)
                 .addGap(44, 44, 44)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnxuat)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab(" Danh sách ", new javax.swing.ImageIcon(getClass().getResource("/image/List.png")), jPanel2); // NOI18N
@@ -771,6 +791,99 @@ public class NguoiThueFrame extends javax.swing.JFrame {
         updateNT();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
+    private void btnxuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxuatActionPerformed
+        XSSFWorkbook workbook = new XSSFWorkbook();
+        // create sheet khách Hàng
+        XSSFSheet sheet = workbook.createSheet("Khách Hàng");
+        XSSFRow row = null;
+        Cell cell = null;
+        // header sheet
+        row = sheet.createRow(0);
+        cell = row.createCell(0, CellType.STRING);
+        cell.setCellValue("Bảng Khách Hàng:");
+
+        row = sheet.createRow(3);
+        cell = row.createCell(0, CellType.STRING);
+        cell.setCellValue("STT");
+
+        cell = row.createCell(1, CellType.STRING);
+        cell.setCellValue("Mã Khách Hàng");
+
+        cell = row.createCell(2, CellType.STRING);
+        cell.setCellValue("Tên khách hàng");
+
+        cell = row.createCell(3, CellType.STRING);
+        cell.setCellValue("Giới tính");
+
+        cell = row.createCell(4, CellType.STRING);
+        cell.setCellValue("Tuổi");
+
+        cell = row.createCell(5, CellType.STRING);
+        cell.setCellValue("Địa chỉ");
+
+        cell = row.createCell(6, CellType.STRING);
+        cell.setCellValue("Điện thoại");
+
+        cell = row.createCell(7, CellType.STRING);
+        cell.setCellValue("Mail");
+
+        cell = row.createCell(8, CellType.STRING);
+        cell.setCellValue("CMND");
+
+        cell = row.createCell(9, CellType.STRING);
+        cell.setCellValue("Hình");
+
+        // value table Người Thuê
+        try {
+            ArrayList<NguoiThue> listItem = NguoiThueDAO.select();
+            if (listItem != null) {
+                int a = listItem.size();
+                for (int i = 0; i < a; i++) {
+                    NguoiThue nguoiThue = listItem.get(i);
+
+                    row = sheet.createRow(4 + i);
+
+                    cell = row.createCell(0, CellType.NUMERIC);
+                    cell.setCellValue(i + 1);
+
+                    cell = row.createCell(1, CellType.STRING);
+                    cell.setCellValue(nguoiThue.getMaND());
+
+                    cell = row.createCell(2, CellType.STRING);
+                    cell.setCellValue(nguoiThue.getTenND());
+
+                    cell = row.createCell(3, CellType.STRING);
+                    cell.setCellValue(nguoiThue.isGioiTinh() ? "Nam" : "Nữ");
+
+                     cell = row.createCell(4, CellType.STRING);
+                    cell.setCellValue(String.valueOf(nguoiThue.getTuoi()));
+                    
+                    cell = row.createCell(5, CellType.STRING);
+                    cell.setCellValue(nguoiThue.getDiaChi());
+
+                    cell = row.createCell(6, CellType.STRING);
+                    cell.setCellValue(nguoiThue.getDienThoai());
+
+                    cell = row.createCell(7, CellType.STRING);
+                    cell.setCellValue(nguoiThue.getEmail());
+
+                    cell = row.createCell(8, CellType.STRING);
+                    cell.setCellValue(nguoiThue.getCmnd());
+
+                    cell = row.createCell(9, CellType.STRING);
+                    cell.setCellValue(nguoiThue.getHinh());
+                }
+            }
+            File f = new File("..\\quan_ly_nha_tro\\Danhsach.xls");
+            FileOutputStream fos = new FileOutputStream(f);
+            workbook.write(fos);
+            fos.close();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_btnxuatActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -815,6 +928,7 @@ public class NguoiThueFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnLast;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JToggleButton btnxuat;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
