@@ -9,6 +9,7 @@ import dao.HopDongDAO;
 import dao.NguoiThueDAO;
 import dao.PhongTroDAO;
 import help.General;
+import help.inWord;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Date;
@@ -28,6 +29,11 @@ public class HopDongFrame extends javax.swing.JFrame {
     String tittle[] = {"MaHD", "MaND", "MaPT", "NgayTao", "NgayBatDau", "NgayHetHan", "TienCoc", "TienThang", "TraCon", "TongTien", "GhiChu"};
     DefaultTableModel model = new DefaultTableModel(tittle, 0);
     int index = 0;
+    String TenND = null;
+    String NgaySinh = null;
+    String CMND = null;
+    String diachi = null;
+    String sdt = null;
 
     public HopDongFrame() {
         initComponents();
@@ -35,11 +41,14 @@ public class HopDongFrame extends javax.swing.JFrame {
         init();
         showHD(0);
         showOnTable();
-        fillCbo();
+        fillCboPT();
+        fillCboND();
     }
 
     void init() {
         setLocationRelativeTo(this);
+
+        
 
     }
 
@@ -96,7 +105,7 @@ public class HopDongFrame extends javax.swing.JFrame {
         }
     }
 
-    public void fillCbo() {
+    public void fillCboPT() {
         try {
             ArrayList<PhongTro> ds = PhongTroDAO.select();
             for (PhongTro pt : ds) {
@@ -106,9 +115,19 @@ public class HopDongFrame extends javax.swing.JFrame {
         }
     }
 
+    public void fillCboND() {
+        try {
+            ArrayList<NguoiThue> ds = NguoiThueDAO.select();
+            for (NguoiThue nt : ds) {
+                cboMaND1.addItem(nt.getMaND());
+            }
+        } catch (Exception e) {
+        }
+    }
+
     public void setModel(HopDong hd) {
         txtMaHD.setText(hd.getMaHD());
-        txtMaND.setText(hd.getMaND());
+        cboMaND1.setSelectedItem(hd.getMaND());
         cboMaPT.setSelectedItem(hd.getMaPT());
         dchNgayTao.setDate(hd.getNgayTao());
         dchNgayBatDau.setDate(hd.getNgayBatDau());
@@ -126,7 +145,7 @@ public class HopDongFrame extends javax.swing.JFrame {
     public HopDong getModel() {
         HopDong hd = new HopDong();
         hd.setMaHD(txtMaHD.getText());
-        hd.setMaND(txtMaND.getText());
+        hd.setMaND(cboMaND1.getSelectedItem() + "");
         hd.setMaPT(cboMaPT.getSelectedItem() + "");
         hd.setNgayTao(dchNgayTao.getDate());
         hd.setNgayBatDau(dchNgayBatDau.getDate());
@@ -148,14 +167,57 @@ public class HopDongFrame extends javax.swing.JFrame {
         }
     }
 
+    public void autoND() {
+        try {
+            ArrayList<NguoiThue> ds = NguoiThueDAO.selectauto(cboMaND1.getSelectedItem() + "");
+            for (NguoiThue nt : ds) {
+                Object[] row = {
+                    nt.getMaND(),
+                    nt.getTenND(),
+                    nt.isGioiTinh() ? "Nam" : "Nữ",
+                    nt.getTuoi(),
+                    nt.getDiaChi(),
+                    nt.getDienThoai(),
+                    nt.getEmail(),
+                    nt.getCmnd(),
+                    nt.getHinh()
+                };
+                TenND = nt.getTenND();
+                NgaySinh = String.valueOf(nt.getTuoi());
+                CMND = nt.getCmnd();
+                diachi = nt.getDiaChi();
+                sdt = nt.getDienThoai();
+            }
+        } catch (Exception e) {
+        }
+    }
+
     public double autoFillTongtien() {
         double money = 0;
         try {
             Date batDau = dchNgayBatDau.getDate();
             Date ketThuc = dchNgayHetHan.getDate();
             double tienThang = Double.parseDouble(txtTienThang.getToolTipText());
+
+//            if (ketThuc.getYear() - batDau.getYear() < 2) {
+//                if (ketThuc.getMonth() - batDau.getMonth() < 2) {
+//                    if (ketThuc.getMonth() - batDau.getMonth() == 1) {
+//                        money = tienThang;
+//                    } else {
+//                        int songay = (ketThuc.getDate() - batDau.getDate());
+//                        money = (tienThang / 30) * songay;
+//                    }
+//
+//                }
+//                else if (ketThuc.getMonth() - batDau.getMonth() >= 2) {
+//                    int sothang = (ketThuc.getMonth()- batDau.getMonth());
+//                 int songay = (ketThuc.getDate() - batDau.getDate());
+//                        money = (tienThang / 30) * songay * sothang;
+//
+//                }
+//            }
             if (ketThuc.getYear() - batDau.getYear() < 2) {
-                if (ketThuc.getDate() - batDau.getDate() >= 15) {
+                if (ketThuc.getDate() - batDau.getDate() < 2) {
                     money = (ketThuc.getMonth() - batDau.getMonth() + 13) * tienThang;
                 } else {
                     money = (ketThuc.getMonth() - batDau.getMonth() + 12) * tienThang;
@@ -212,7 +274,6 @@ public class HopDongFrame extends javax.swing.JFrame {
         btnDelete.setEnabled(!isEnable);
         btnUpdate.setEnabled(!isEnable);
         txtMaHD.setEnabled(isEnable);
-        txtMaND.setBackground(Color.white);
         txtMaHD.setBackground(Color.white);
         dchNgayBatDau.setBackground(Color.white);
         dchNgayHetHan.setBackground(Color.white);
@@ -224,7 +285,6 @@ public class HopDongFrame extends javax.swing.JFrame {
     public boolean validateForm(boolean isUpdated) {
         boolean checkError = true;
         String maHD = txtMaHD.getText();
-        String maND = txtMaND.getText();
         Date batDau = dchNgayBatDau.getDate();
         Date ketThuc = dchNgayHetHan.getDate();
         String reMaHD = "HD[0-9]{3}";
@@ -252,30 +312,13 @@ public class HopDongFrame extends javax.swing.JFrame {
             }
         }
         //////////////////////////////////////////////////////////////////////
-        if (maND.isEmpty()) {
-            checkError = focus(txtMaND);
-        } else {
-            boolean next = true;
-            try {
-                ArrayList<NguoiThue> ds = NguoiThueDAO.select();
-                for (NguoiThue nt : ds) {
-                    if (nt.getMaND().equals(maND)) {
-                        checkError = unfocus(txtMaND);
-                        next = false;
-                        break;
-                    }
-                }
-                if (next) {
-                    checkError = focus(txtMaND);
-                    JOptionPane.showMessageDialog(this, "There is no MaND: " + maND + "!", "Error", 0);
-                }
 
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
         ///////////////////////////////////////////////////////////////////////
         if (cboMaPT.getSelectedIndex() < 0) {
+            checkError = false;
+            JOptionPane.showMessageDialog(this, "Please choose MaPT!", "Error", 0);
+        }
+        if (cboMaND1.getSelectedIndex() < 0) {
             checkError = false;
             JOptionPane.showMessageDialog(this, "Please choose MaPT!", "Error", 0);
         }
@@ -333,9 +376,9 @@ public class HopDongFrame extends javax.swing.JFrame {
             double tienCoc = Double.parseDouble(txtTienCoc.getText());
             double tienThang = Double.parseDouble(txtTienThang.getToolTipText());
             if (tienCoc < tienThang) {
-                checkError = false;
+                checkError = true;
                 txtTienCoc.setBackground(Color.pink);
-                JOptionPane.showMessageDialog(this, "TienCoc must equal or more than tienThang!", "Error", 0);
+                JOptionPane.showMessageDialog(this, "TienCoc must equal or less than tienThang!", "Error", 0);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "TienCoc is not valid! (Number is required. For instance: 100000!)", "Error", 0);
@@ -355,6 +398,16 @@ public class HopDongFrame extends javax.swing.JFrame {
         return true;
     }
 
+    public void inHD() {
+        try {
+            
+//                inWord inword = new inWord();
+//                inword.CreateContract(TenND, txtMaHD.getText(), txtGhiChu.getText(), NgaySinh, CMND, diachi, sdt);
+        } catch (Exception e) {
+        }
+
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -370,7 +423,6 @@ public class HopDongFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtMaHD = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtMaND = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         dchNgayTao = new com.toedter.calendar.JDateChooser();
@@ -401,6 +453,7 @@ public class HopDongFrame extends javax.swing.JFrame {
         dchNgayHetHan = new com.toedter.calendar.JDateChooser();
         cboMaPT = new javax.swing.JComboBox<String>();
         jButton1 = new javax.swing.JButton();
+        cboMaND1 = new javax.swing.JComboBox<String>();
         jPanel2 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -428,8 +481,6 @@ public class HopDongFrame extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel3.setText("Mã người dùng:");
-
-        txtMaND.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel4.setText("Mã phòng trọ:");
@@ -477,6 +528,11 @@ public class HopDongFrame extends javax.swing.JFrame {
 
         txtTraCon.setEditable(false);
         txtTraCon.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        txtTraCon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTraConActionPerformed(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel10.setText("Các điều khoản:");
@@ -590,12 +646,22 @@ public class HopDongFrame extends javax.swing.JFrame {
         txtTongTien.setEditable(false);
         txtTongTien.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         txtTongTien.setToolTipText("");
+        txtTongTien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTongTienActionPerformed(evt);
+            }
+        });
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel13.setText("Trả theo tháng:");
 
         txtTienThang.setEditable(false);
         txtTienThang.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        txtTienThang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTienThangActionPerformed(evt);
+            }
+        });
 
         dchNgayHetHan.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         dchNgayHetHan.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -619,6 +685,13 @@ public class HopDongFrame extends javax.swing.JFrame {
             }
         });
 
+        cboMaND1.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        cboMaND1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboMaND1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -638,9 +711,7 @@ public class HopDongFrame extends javax.swing.JFrame {
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addComponent(jLabel2)
                                                 .addGap(40, 40, 40)))
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtMaHD)
-                                            .addComponent(txtMaND, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(txtMaHD, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -653,7 +724,8 @@ public class HopDongFrame extends javax.swing.JFrame {
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                 .addComponent(dchNgayTao, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
-                                                .addComponent(cboMaPT, 0, 195, Short.MAX_VALUE)))
+                                                .addComponent(cboMaPT, 0, 195, Short.MAX_VALUE)
+                                                .addComponent(cboMaND1, 0, 195, Short.MAX_VALUE)))
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel10)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -719,7 +791,7 @@ public class HopDongFrame extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(txtMaND, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cboMaND1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cboMaPT, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -920,7 +992,7 @@ public class HopDongFrame extends javax.swing.JFrame {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        int click =JOptionPane.showConfirmDialog(this,"");
+        int click = JOptionPane.showConfirmDialog(this, "");
         this.removeHD();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
@@ -979,6 +1051,22 @@ public class HopDongFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void txtTraConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTraConActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTraConActionPerformed
+
+    private void txtTongTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTongTienActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTongTienActionPerformed
+
+    private void txtTienThangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTienThangActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTienThangActionPerformed
+
+    private void cboMaND1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMaND1ActionPerformed
+        autoND();        // TODO add your handling code here:
+    }//GEN-LAST:event_cboMaND1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1023,6 +1111,7 @@ public class HopDongFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnNew;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JComboBox<String> cboMaND1;
     private javax.swing.JComboBox<String> cboMaPT;
     private com.toedter.calendar.JDateChooser dchNgayBatDau;
     private com.toedter.calendar.JDateChooser dchNgayHetHan;
@@ -1053,7 +1142,6 @@ public class HopDongFrame extends javax.swing.JFrame {
     private javax.swing.JTable tblHD;
     private javax.swing.JTextArea txtGhiChu;
     private javax.swing.JTextField txtMaHD;
-    private javax.swing.JTextField txtMaND;
     private javax.swing.JTextField txtTienCoc;
     private javax.swing.JTextField txtTienThang;
     private javax.swing.JTextField txtTongTien;

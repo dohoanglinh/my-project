@@ -66,4 +66,25 @@ public class NguoiThueDAO {
         }
         return ds;
     }
+    public static ArrayList<NguoiThue> selectauto(String MaND) throws Exception{
+        ArrayList<NguoiThue> ds = new ArrayList<>();
+        try (ResultSet rs = Jdbc.executeQuery("Select * from NguoiDung where MaND=?");) {
+
+            while (rs.next()) {
+                NguoiThue nt = new NguoiThue();
+                nt.setMaND(rs.getString("MaND"));
+                nt.setTenND(rs.getString("TenND"));
+                nt.setGioiTinh(rs.getBoolean("GioiTinh"));
+                nt.setTuoi(rs.getInt("Tuoi"));
+                nt.setDiaChi(rs.getString("DiaChi"));
+                nt.setDienThoai(rs.getString("DienThoai"));
+                nt.setEmail(rs.getString("Email"));
+                nt.setCmnd(rs.getString("CMND"));
+                nt.setHinh(rs.getString("Hinh"));
+                ds.add(nt);
+            }
+        }
+        return ds;
+    }
+
 }

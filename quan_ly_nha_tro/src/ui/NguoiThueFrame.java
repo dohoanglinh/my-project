@@ -8,6 +8,7 @@ package ui;
 import dao.NguoiThueDAO;
 import help.General;
 import java.awt.Color;
+import java.awt.Desktop;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
@@ -796,6 +797,7 @@ public class NguoiThueFrame extends javax.swing.JFrame {
         // create sheet khách Hàng
         XSSFSheet sheet = workbook.createSheet("Khách Hàng");
         XSSFRow row = null;
+        
         Cell cell = null;
         // header sheet
         row = sheet.createRow(0);
@@ -875,13 +877,17 @@ public class NguoiThueFrame extends javax.swing.JFrame {
                 }
             }
             File f = new File("..\\quan_ly_nha_tro\\Danhsach.xls");
-            FileOutputStream fos = new FileOutputStream(f);
-            workbook.write(fos);
-            fos.close();
+            try (FileOutputStream fos = new FileOutputStream(f)) {
+                workbook.write(fos);
+            }
 
+            JOptionPane.showMessageDialog(this, "Danh sách đã được lưu","thông báo",1);
+            JOptionPane.showMessageDialog(this, "Đang mở danh sách","thông báo",1);
+      Desktop.getDesktop().open(new File("..\\quan_ly_nha_tro\\Danhsach.xls"));
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+  
     }//GEN-LAST:event_btnxuatActionPerformed
 
     /**
