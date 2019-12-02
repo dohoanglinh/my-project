@@ -48,8 +48,6 @@ public class HopDongFrame extends javax.swing.JFrame {
     void init() {
         setLocationRelativeTo(this);
 
-        
-
     }
 
     public void showHD(int index) {
@@ -400,9 +398,9 @@ public class HopDongFrame extends javax.swing.JFrame {
 
     public void inHD() {
         try {
-            
-//                inWord inword = new inWord();
-//                inword.CreateContract(TenND, txtMaHD.getText(), txtGhiChu.getText(), NgaySinh, CMND, diachi, sdt);
+
+            inWord inword = new inWord();
+            inword.CreateContract(TenND,dchNgayTao.getDate(),dchNgayBatDau.getDate(),dchNgayHetHan.getDate(), txtTienCoc.getText(), txtTienThang.getText(), txtTraCon.getText(), txtTongTien.getText(), txtMaHD.getText(), txtGhiChu.getText(), NgaySinh, CMND, diachi, sdt);
         } catch (Exception e) {
         }
 
@@ -1048,7 +1046,8 @@ public class HopDongFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_tblHDMousePressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        autoND();
+        inHD();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtTraConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTraConActionPerformed
