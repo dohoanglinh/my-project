@@ -44,12 +44,12 @@ public class inWord {
         String title4 = "------------";
         run.setText(title4);
         run.addBreak();
-        String title2 = "HỢP ĐỒNG THUÊ TRỌ";
+        String title2 = "HỢP ĐỒNG CHO THUÊ TRỌ";
         run.setText(title2);
         run.addBreak();
 
         XWPFRun run2 = slogan.createRun();
-        String title3 = "Số Hợp Đồng:" + sohd;
+        String title3 = "Số Hợp Đồng: " + sohd;
         run2.setFontSize(14);
         run2.setText(title3);
         //Paragraph 1
@@ -80,7 +80,7 @@ public class inWord {
         runBenBan.setFontSize(16);
         runBenBan.setBold(true);
         String text5 = "1. BÊN CHO THUÊ:";
-        String text6 = "    TRUNG TÂM NHÀ ĐẤT ABC GROUPS";
+        String text6 = "    TRUNG TÂM NHÀ ĐẤT ABD GROUPS";
         runBenBan.setText(text5);
         runBenBan.addBreak();
         runBenBan.setText(text6);
@@ -120,7 +120,7 @@ public class inWord {
         runBenMua.setFontSize(16);
         runBenMua.setBold(true);
         String text8 = "2. BÊN THUÊ NHÀ TRỌ:";
-        String text9 = "    Ông/Bà: " + tenkh;
+        String text9 = "    Ông/Bà: ...................................";
         runBenMua.setText(text8);
         runBenMua.addBreak();
         runBenMua.setText(text9);
@@ -128,10 +128,10 @@ public class inWord {
 
         XWPFRun runBenMua1 = BenMua.createRun();
         runBenMua1.setFontSize(14);
-        String ngaysinh = "     Ngày sinh: " + ngsinh;
-        String socmt = "     Số CMND: " + socmnd;
-        String diachi1 = "     Địa chỉ: " + diachi;
-        String sdt1 = "     Số điện thoại: " + sodt;
+        String ngaysinh = "     Ngày sinh:..................... ";
+        String socmt = "     Số CMND:........................ " ;
+        String diachi1 = "     Địa chỉ: ....................................................................................................";
+        String sdt1 = "     Số điện thoại: ....................................";
         runBenMua1.setText(ngaysinh);
         runBenMua1.addBreak();
         runBenMua1.setText(socmt);
@@ -141,10 +141,17 @@ public class inWord {
         runBenMua1.setText(sdt1);
         runBenMua1.addBreak();
 
+        XWPFParagraph hopdong = document.createParagraph();
+        XWPFRun runhd = hopdong.createRun();
+        runhd.setFontSize(16);
+        runhd.setBold(true);
+        String ttt = "THÔNG TIN HỢP ĐỒNG: ";
+        runhd.setText(ttt);
+        runhd.addBreak();
+
         //ThongTinTrọ
-        XWPFRun tttro = BenMua.createRun();
+        XWPFRun tttro = hopdong.createRun();
         tttro.setFontSize(14);
-        String ttt = "Thông tin TRỌ CỦA KHÁCH HÀNG: ";
         String ngaytao = "Ngày tạo hợp đồng: " + timeFormat.format(NgayTao);
         String NgayBD = "Ngày bắt đầu: " + timeFormat.format(NgayBatDau);
         String Ketthuc = "Ngày kết thúc hợp đồng:" + timeFormat.format(NgayKT);
@@ -153,32 +160,38 @@ public class inWord {
         String Tratruoc = "Tiền đã trả trước: " + traTruoc;
         String tongtien = "Tổng số Tiền:" + TongTien;
 
-        runBenMua1.setText(ttt);
-        runBenMua1.addBreak();
-        runBenMua1.setText(ngaytao);
-        runBenMua1.addBreak();
-        runBenMua1.setText(NgayBD);
-        runBenMua1.addBreak();
-        runBenMua1.setText(Ketthuc);
-        runBenMua1.addBreak();
-        runBenMua1.setText(trathang);
-        runBenMua1.addBreak();
-        runBenMua1.setText(Tiencoc);
-        runBenMua1.addBreak();
-        runBenMua1.setText(traTruoc);
-        runBenMua1.addBreak();
-        runBenBan1.setText(tongtien);
-        runBenMua1.addBreak();
+
+        tttro.setText(ngaytao);
+        tttro.addBreak();
+        tttro.setText(NgayBD);
+        tttro.addBreak();
+        tttro.setText(Ketthuc);
+        tttro.addBreak();
+        tttro.setText(trathang);
+        tttro.addBreak();
+        tttro.setText(Tiencoc);
+        tttro.addBreak();
+        tttro.setText(Tratruoc);
+        tttro.addBreak();
+        tttro.setText(tongtien);
+        tttro.addBreak();
 
 //dieukhoan
-        XWPFRun dieukhoan = BenMua.createRun();
-        dieukhoan.setFontSize(14);
-        String ddf = "Với các điều khoản như sau:";
-        String dk = dieuk;
+        XWPFParagraph dieukhoan = document.createParagraph();
+        XWPFRun dkk = dieukhoan.createRun();
+        dkk.setFontSize(16);
+        dkk.setBold(true);
+        String dk = "ĐIỀU KHOẢN: ";
+        dkk.setText(dk);
+        dkk.addBreak();
 
-        runBenMua1.setText(ddf);
-        runBenMua1.addBreak();
-        runBenMua1.setText(dk);
+       XWPFRun dieukhoan1 = dieukhoan.createRun();
+        dieukhoan1.setFontSize(14);
+        String dieukhoan1s = dieuk;
+        
+        dieukhoan1.setText(dieukhoan1s);
+        dieukhoan1.addBreak();
+        
         //Ký tên
         XWPFTable KyTen = document.createTable();
         KyTen.setWidth("8500");
@@ -212,6 +225,11 @@ public class inWord {
                     out.close();
                     document.close();
                     JOptionPane.showMessageDialog(null, "Tạo hợp đồng thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+
+                    JOptionPane.showMessageDialog(null, "Đang mở hợp đồng " + sohd, "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                    Desktop.getDesktop().open(new File("..\\quan_ly_nha_tro\\hopdong" + sohd + ".docx"));
+                } else {
+                    JOptionPane.showMessageDialog(null, "bạn chọn không tạo lại hợp đồng.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
 
                     JOptionPane.showMessageDialog(null, "Đang mở hợp đồng " + sohd, "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                     Desktop.getDesktop().open(new File("..\\quan_ly_nha_tro\\hopdong" + sohd + ".docx"));

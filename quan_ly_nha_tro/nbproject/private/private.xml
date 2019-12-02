@@ -6,7 +6,8 @@
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/my-project/quan_ly_nha_tro/src/help/inWord.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/my-project/quan_ly_nha_tro/src/ui/HopDongFrame.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/my-project/quan_ly_nha_tro/src/dao/NguoiThueDAO.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/my-project/quan_ly_nha_tro/src/help/Jdbc.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/my-project/quan_ly_nha_tro/src/dao/LoaiNhaTroDAO.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/my-project/quan_ly_nha_tro/src/ui/TimPhongDialog.java</file>
         </group>
     </open-files>
 </project-private>

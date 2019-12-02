@@ -29,7 +29,7 @@ public class HopDongFrame extends javax.swing.JFrame {
     String tittle[] = {"MaHD", "MaND", "MaPT", "NgayTao", "NgayBatDau", "NgayHetHan", "TienCoc", "TienThang", "TraCon", "TongTien", "GhiChu"};
     DefaultTableModel model = new DefaultTableModel(tittle, 0);
     int index = 0;
-    String TenND = null;
+    String TenND = "Nguyễn Văn A";
     String NgaySinh = null;
     String CMND = null;
     String diachi = null;
@@ -42,6 +42,7 @@ public class HopDongFrame extends javax.swing.JFrame {
         showHD(0);
         showOnTable();
         fillCboPT();
+        autoND();
         fillCboND();
     }
 
@@ -130,6 +131,7 @@ public class HopDongFrame extends javax.swing.JFrame {
         dchNgayTao.setDate(hd.getNgayTao());
         dchNgayBatDau.setDate(hd.getNgayBatDau());
         dchNgayHetHan.setDate(hd.getNgayHetHan());
+        txtGhiChu.setText(hd.getGhiChu());
         txtTienCoc.setText(General.formatNumber(hd.getTienCuoc()));
         txtTienCoc.setToolTipText(hd.getTienCuoc() + "");
         txtTienThang.setText(General.formatNumber(hd.getTienThang()));
@@ -238,6 +240,11 @@ public class HopDongFrame extends javax.swing.JFrame {
             HopDongDAO.AddHD(hd);
             showOnTable();
             JOptionPane.showMessageDialog(this, "Tạo hợp đồng thành công!");
+            txtMaHD.setBackground(Color.white);
+            dchNgayBatDau.setBackground(Color.white);
+            dchNgayHetHan.setBackground(Color.white);
+            dchNgayTao.setBackground(Color.white);
+            txtTienCoc.setBackground(Color.white);
             index = tblHD.getRowCount();
             showHD(index);
         } catch (Exception e) {
@@ -400,7 +407,7 @@ public class HopDongFrame extends javax.swing.JFrame {
         try {
 
             inWord inword = new inWord();
-            inword.CreateContract(TenND,dchNgayTao.getDate(),dchNgayBatDau.getDate(),dchNgayHetHan.getDate(), txtTienCoc.getText(), txtTienThang.getText(), txtTraCon.getText(), txtTongTien.getText(), txtMaHD.getText(), txtGhiChu.getText(), NgaySinh, CMND, diachi, sdt);
+            inword.CreateContract(TenND, dchNgayTao.getDate(), dchNgayBatDau.getDate(), dchNgayHetHan.getDate(), txtTienCoc.getText(), txtTienThang.getText(), txtTraCon.getText(), txtTongTien.getText(), txtMaHD.getText(), txtGhiChu.getText(), NgaySinh, CMND, diachi, sdt);
         } catch (Exception e) {
         }
 
@@ -960,8 +967,9 @@ public class HopDongFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (!validateForm(false)) {
             return;
+        } else {
+            this.addHD();
         }
-        this.addHD();
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
