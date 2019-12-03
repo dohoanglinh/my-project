@@ -66,12 +66,11 @@ public class NguoiThueDAO {
         }
         return ds;
     }
-    public static ArrayList<NguoiThue> selectauto(String MaND) throws Exception{
-        ArrayList<NguoiThue> ds = new ArrayList<>();
-        try (ResultSet rs = Jdbc.executeQuery("Select * from NguoiDung where MaND=?");) {
+    public static NguoiThue selectauto(String MaND) throws Exception{
+        NguoiThue nt = new NguoiThue();
+        try (ResultSet rs = Jdbc.executeQuery("Select * from NguoiDung where MaND='" +  MaND+"'");) {
 
-            while (rs.next()) {
-                NguoiThue nt = new NguoiThue();
+            if (rs.next()) {
                 nt.setMaND(rs.getString("MaND"));
                 nt.setTenND(rs.getString("TenND"));
                 nt.setGioiTinh(rs.getBoolean("GioiTinh"));
@@ -81,10 +80,9 @@ public class NguoiThueDAO {
                 nt.setEmail(rs.getString("Email"));
                 nt.setCmnd(rs.getString("CMND"));
                 nt.setHinh(rs.getString("Hinh"));
-                ds.add(nt);
             }
         }
-        return ds;
+        return nt;
     }
 
 }

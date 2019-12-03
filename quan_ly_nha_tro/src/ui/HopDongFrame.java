@@ -169,8 +169,7 @@ public class HopDongFrame extends javax.swing.JFrame {
 
     public void autoND() {
         try {
-            ArrayList<NguoiThue> ds = NguoiThueDAO.selectauto(cboMaND1.getSelectedItem() + "");
-            for (NguoiThue nt : ds) {
+            NguoiThue nt = NguoiThueDAO.selectauto(cboMaND1.getSelectedItem() + "");
                 Object[] row = {
                     nt.getMaND(),
                     nt.getTenND(),
@@ -187,9 +186,15 @@ public class HopDongFrame extends javax.swing.JFrame {
                 CMND = nt.getCmnd();
                 diachi = nt.getDiaChi();
                 sdt = nt.getDienThoai();
-            }
+            
         } catch (Exception e) {
         }
+        System.out.println("hahahahahahaha");
+        System.out.println(TenND);
+        System.out.println(NgaySinh);
+        System.out.println(CMND);
+        System.out.println(diachi);
+        System.out.println(sdt);
     }
 
     public double autoFillTongtien() {
@@ -691,6 +696,11 @@ public class HopDongFrame extends javax.swing.JFrame {
         });
 
         cboMaND1.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        cboMaND1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboMaND1ItemStateChanged(evt);
+            }
+        });
         cboMaND1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboMaND1ActionPerformed(evt);
@@ -1071,8 +1081,11 @@ public class HopDongFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtTienThangActionPerformed
 
     private void cboMaND1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMaND1ActionPerformed
-        autoND();        // TODO add your handling code here:
     }//GEN-LAST:event_cboMaND1ActionPerformed
+
+    private void cboMaND1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboMaND1ItemStateChanged
+        autoND();        // TODO add your handling code here:
+    }//GEN-LAST:event_cboMaND1ItemStateChanged
 
     /**
      * @param args the command line arguments

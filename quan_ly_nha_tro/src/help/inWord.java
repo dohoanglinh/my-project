@@ -120,7 +120,7 @@ public class inWord {
         runBenMua.setFontSize(16);
         runBenMua.setBold(true);
         String text8 = "2. BÊN THUÊ NHÀ TRỌ:";
-        String text9 = "    Ông/Bà: ...................................";
+        String text9 = "    Ông/Bà: "+tenkh;
         runBenMua.setText(text8);
         runBenMua.addBreak();
         runBenMua.setText(text9);
@@ -128,10 +128,10 @@ public class inWord {
 
         XWPFRun runBenMua1 = BenMua.createRun();
         runBenMua1.setFontSize(14);
-        String ngaysinh = "     Ngày sinh:..................... ";
-        String socmt = "     Số CMND:........................ " ;
-        String diachi1 = "     Địa chỉ: ....................................................................................................";
-        String sdt1 = "     Số điện thoại: ....................................";
+        String ngaysinh = "     Tuổi: "+ngsinh;
+        String socmt = "     Số CMND: "+socmnd ;
+        String diachi1 = "     Địa chỉ: "+diachi;
+        String sdt1 = "     Số điện thoại: "+sodt;
         runBenMua1.setText(ngaysinh);
         runBenMua1.addBreak();
         runBenMua1.setText(socmt);
