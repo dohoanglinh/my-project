@@ -876,14 +876,14 @@ public class NguoiThueFrame extends javax.swing.JFrame {
                     cell.setCellValue(nguoiThue.getHinh());
                 }
             }
-            File f = new File("..\\quan_ly_nha_tro\\Danhsach.xls");
+            File f = new File("..\\quan_ly_nha_tro\\ThongKe\\Danhsach.xls");
             try (FileOutputStream fos = new FileOutputStream(f)) {
                 workbook.write(fos);
             }
 
             JOptionPane.showMessageDialog(this, "Danh sách đã được lưu","thông báo",1);
             JOptionPane.showMessageDialog(this, "Đang mở danh sách","thông báo",1);
-      Desktop.getDesktop().open(new File("..\\quan_ly_nha_tro\\Danhsach.xls"));
+      Desktop.getDesktop().open(new File("..\\quan_ly_nha_tro\\ThongKe\\Danhsach.xls"));
         } catch (Exception ex) {
             ex.printStackTrace();
         }

@@ -215,39 +215,39 @@ public class inWord {
 
         //ghi file
         try {
-            File dd = new File("..\\quan_ly_nha_tro\\hopdong" + sohd + ".docx");
+            File dd = new File("..\\quan_ly_nha_tro\\ThongKe\\hopdong" + sohd + ".docx");
             if (dd.exists()) {
                 int n = JOptionPane.showConfirmDialog(null, "Hợp đồng đã có bạn muốn tạo lại.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                 if (n == JOptionPane.YES_OPTION) {
                     dd.delete();
-                    FileOutputStream out = new FileOutputStream(new File("..\\quan_ly_nha_tro\\hopdong" + sohd + ".docx"));
+                    FileOutputStream out = new FileOutputStream(new File("..\\quan_ly_nha_tro\\ThongKe\\hopdong" + sohd + ".docx"));
                     document.write(out);
                     out.close();
                     document.close();
                     JOptionPane.showMessageDialog(null, "Tạo hợp đồng thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
 
                     JOptionPane.showMessageDialog(null, "Đang mở hợp đồng " + sohd, "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-                    Desktop.getDesktop().open(new File("..\\quan_ly_nha_tro\\hopdong" + sohd + ".docx"));
+                    Desktop.getDesktop().open(new File("..\\quan_ly_nha_tro\\ThongKe\\hopdong" + sohd + ".docx"));
                 } else {
                     JOptionPane.showMessageDialog(null, "bạn chọn không tạo lại hợp đồng.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
 
                     JOptionPane.showMessageDialog(null, "Đang mở hợp đồng " + sohd, "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-                    Desktop.getDesktop().open(new File("..\\quan_ly_nha_tro\\hopdong" + sohd + ".docx"));
+                    Desktop.getDesktop().open(new File("..\\quan_ly_nha_tro\\ThongKe\\hopdong" + sohd + ".docx"));
                 }
             } else {
-                FileOutputStream out = new FileOutputStream(new File("..\\quan_ly_nha_tro\\hopdong" + sohd + ".docx"));
+                FileOutputStream out = new FileOutputStream(new File("..\\quan_ly_nha_tro\\ThongKe\\hopdong" + sohd + ".docx"));
                 document.write(out);
                 out.close();
                 document.close();
                 JOptionPane.showMessageDialog(null, "Tạo hợp đồng thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                 JOptionPane.showMessageDialog(null, "Đang mở hợp đồng " + sohd, "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-                Desktop.getDesktop().open(new File("..\\quan_ly_nha_tro\\hopdong" + sohd + ".docx"));
+                Desktop.getDesktop().open(new File("..\\quan_ly_nha_tro\\ThongKe\\hopdong" + sohd + ".docx"));
             }
         } catch (Exception e) {
         }
 //        try {
 //
-//            FileOutputStream out = new FileOutputStream(new File("..\\quan_ly_nha_tro\\hopdong"+sohd+".docx"));
+//            FileOutputStream out = new FileOutputStream(new File("..\\quan_ly_nha_tro\\ThongKe\\hopdong"+sohd+".docx"));
 //            document.write(out);
 //            out.close();
 //            document.close();
