@@ -191,7 +191,7 @@ public class NguoiQuanLyFrame extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tabNQL = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txtMaNQL = new javax.swing.JTextField();
@@ -222,9 +222,9 @@ public class NguoiQuanLyFrame extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel1.setText("NGƯỜI QUẢN LÝ");
 
-        jTabbedPane1.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
-        jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        tabNQL.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
+        tabNQL.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        tabNQL.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -418,7 +418,7 @@ public class NguoiQuanLyFrame extends javax.swing.JFrame {
                 .addGap(22, 22, 22))
         );
 
-        jTabbedPane1.addTab("Cập nhật", new javax.swing.ImageIcon(getClass().getResource("/image/Save as.png")), jPanel1); // NOI18N
+        tabNQL.addTab("Cập nhật", new javax.swing.ImageIcon(getClass().getResource("/image/Save as.png")), jPanel1); // NOI18N
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -459,7 +459,7 @@ public class NguoiQuanLyFrame extends javax.swing.JFrame {
                 .addContainerGap(74, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Danh sách", new javax.swing.ImageIcon(getClass().getResource("/image/List.png")), jPanel2); // NOI18N
+        tabNQL.addTab("Danh sách", new javax.swing.ImageIcon(getClass().getResource("/image/List.png")), jPanel2); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -471,7 +471,7 @@ public class NguoiQuanLyFrame extends javax.swing.JFrame {
                 .addGap(287, 287, 287))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addComponent(tabNQL)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -480,7 +480,7 @@ public class NguoiQuanLyFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane1)
+                .addComponent(tabNQL)
                 .addGap(16, 16, 16))
         );
 
@@ -555,7 +555,13 @@ public class NguoiQuanLyFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void tblNQLMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNQLMousePressed
-        // TODO add your handling code here:
+    if (evt.getClickCount() == 2) {
+            index = tblNQL.getSelectedRow();
+            if (index >= 0) {
+                showNQL(index);
+                tabNQL.setSelectedIndex(0);
+            }
+        }        // TODO add your handling code here:
     }//GEN-LAST:event_tblNQLMousePressed
 
     /**
@@ -614,9 +620,9 @@ public class NguoiQuanLyFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JRadioButton rdoNQL;
     private javax.swing.JRadioButton rdoNV;
+    private javax.swing.JTabbedPane tabNQL;
     private javax.swing.JTable tblNQL;
     private javax.swing.JTextField txtMaNQL;
     private javax.swing.JPasswordField txtMatkhau;

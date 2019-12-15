@@ -288,7 +288,7 @@ int index=0;
         jLabel2 = new javax.swing.JLabel();
         txtMaPT = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        cboMaLN = new javax.swing.JComboBox<>();
+        cboMaLN = new javax.swing.JComboBox<String>();
         jLabel4 = new javax.swing.JLabel();
         txtDienTich = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -314,7 +314,7 @@ int index=0;
         btnAdd = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        cboNLH = new javax.swing.JComboBox<>();
+        cboNLH = new javax.swing.JComboBox<String>();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblPT = new javax.swing.JTable();
@@ -624,6 +624,11 @@ int index=0;
             }
         });
         tblPT.setRowHeight(25);
+        tblPT.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblPTMousePressed(evt);
+            }
+        });
         jScrollPane3.setViewportView(tblPT);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
@@ -739,7 +744,7 @@ int index=0;
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
         // TODO add your handling code here:
-        setModel(new PhongTro());
+               setModel(new PhongTro());
         setStatus(true);
     }//GEN-LAST:event_btnNewActionPerformed
 
@@ -774,6 +779,16 @@ int index=0;
         new TimPhongDialog(this, true).setVisible(true);
         
     }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void tblPTMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPTMousePressed
+if (evt.getClickCount() == 2) {
+            index = tblPT.getSelectedRow();
+            if (index >= 0) {
+                showPT(index);
+                tabPT.setSelectedIndex(0);
+            }
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_tblPTMousePressed
 
     /**
      * @param args the command line arguments

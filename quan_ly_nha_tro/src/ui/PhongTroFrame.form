@@ -648,6 +648,9 @@
                     </Property>
                     <Property name="rowHeight" type="int" value="25"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPTMousePressed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

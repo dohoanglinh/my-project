@@ -280,7 +280,7 @@ public class NguoiThueFrame extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        lanNT = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txtMaNT = new javax.swing.JTextField();
@@ -325,9 +325,9 @@ public class NguoiThueFrame extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel1.setText("QUẢN LÝ NGƯỜI THUÊ PHÒNG");
 
-        jTabbedPane1.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
-        jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        lanNT.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
+        lanNT.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        lanNT.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
 
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -627,7 +627,7 @@ public class NguoiThueFrame extends javax.swing.JFrame {
                 .addGap(13, 13, 13))
         );
 
-        jTabbedPane1.addTab(" Cập  nhật ", new javax.swing.ImageIcon(getClass().getResource("/image/Save as.png")), jPanel1); // NOI18N
+        lanNT.addTab(" Cập  nhật ", new javax.swing.ImageIcon(getClass().getResource("/image/Save as.png")), jPanel1); // NOI18N
 
         jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -656,6 +656,11 @@ public class NguoiThueFrame extends javax.swing.JFrame {
             }
         });
         tblNT.setRowHeight(25);
+        tblNT.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblNTMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblNT);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
@@ -697,7 +702,7 @@ public class NguoiThueFrame extends javax.swing.JFrame {
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab(" Danh sách ", new javax.swing.ImageIcon(getClass().getResource("/image/List.png")), jPanel2); // NOI18N
+        lanNT.addTab(" Danh sách ", new javax.swing.ImageIcon(getClass().getResource("/image/List.png")), jPanel2); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -709,7 +714,7 @@ public class NguoiThueFrame extends javax.swing.JFrame {
                 .addGap(270, 270, 270))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 867, Short.MAX_VALUE)
+                .addComponent(lanNT, javax.swing.GroupLayout.DEFAULT_SIZE, 867, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -718,7 +723,7 @@ public class NguoiThueFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lanNT, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -890,6 +895,16 @@ public class NguoiThueFrame extends javax.swing.JFrame {
   
     }//GEN-LAST:event_btnxuatActionPerformed
 
+    private void tblNTMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNTMousePressed
+if (evt.getClickCount() == 2) {
+            index = tblNT.getSelectedRow();
+            if (index >= 0) {
+                showNT(index);
+                lanNT.setSelectedIndex(0);
+            }
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_tblNTMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -954,7 +969,7 @@ public class NguoiThueFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane lanNT;
     private javax.swing.JLabel lblHinh;
     private javax.swing.JRadioButton rdoNam;
     private javax.swing.JRadioButton rdoNu;

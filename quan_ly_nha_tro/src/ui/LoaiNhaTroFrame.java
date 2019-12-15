@@ -433,6 +433,11 @@ public class LoaiNhaTroFrame extends javax.swing.JFrame {
             }
         ));
         tblLoaiNT.setRowHeight(25);
+        tblLoaiNT.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblLoaiNTMousePressed(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblLoaiNT);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
@@ -561,6 +566,16 @@ public class LoaiNhaTroFrame extends javax.swing.JFrame {
         index++;
         showDetail(index);
     }//GEN-LAST:event_btnNextActionPerformed
+
+    private void tblLoaiNTMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblLoaiNTMousePressed
+if (evt.getClickCount() == 2) {
+            index = tblLoaiNT.getSelectedRow();
+            if (index >= 0) {
+                showDetail(index);
+                tabLNT.setSelectedIndex(0);
+            }
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_tblLoaiNTMousePressed
 
     /**
      * @param args the command line arguments
